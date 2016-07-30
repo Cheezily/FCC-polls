@@ -1,0 +1,119 @@
+body {
+  background-image: url('../images/wood.jpg');
+  font-family: sans-serif;
+}
+
+.container {
+  width: 960px;
+  height: 500px;
+  margin: 30px auto;
+  background: none;
+}
+
+.leftSideStuff {
+  box-sizing: border-box;
+  padding: 20px;
+  float: left;
+  background: #eaefec;
+  width: 520px;
+  height: 100%;
+  box-shadow: 0px 5px 8px #000;
+}
+
+.items {
+  background: none;
+  width: 400px;
+  height: 460px;
+  float: right;
+  margin-right: 40px;
+  z-index: -1;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.items::after {
+  clear: both;
+}
+
+.items:hover {
+  width: 440px;
+  margin-right: 0;
+}
+
+.items:hover > .item {
+  animation-play-state: paused;
+}
+
+.item {
+  box-sizing: border-box;
+  position: relative;
+  background: #aaa;
+  height: 100px;
+  width: 400px;
+  float: left;
+  margin-left: 0;
+  animation: scroll 15s infinite linear;
+  border: 1px solid #333;
+  border-right: none;
+  border-left: none;
+  text-align: center;
+  z-index: 0;
+}
+
+.item:nth-of-type(2n) {
+  background: #7d7d7d;
+}
+
+.item:hover {
+  height: 118px;
+  width: 430px;
+  float: left;
+  position: relative;
+  left: -2px;
+  box-shadow: 0 0 15px 0 #000;
+  margin: -11px auto;
+  z-index: 5;
+  box-shadow: -2px 5px 10px #000;
+  background: #eaefec;
+  border: none;
+  transition: background .2s, width .2s linear;
+}
+
+.item:hover::after {
+  border-top: 1px dotted #333;
+  font-family: verdana;
+  font-size: 12px;
+  content: "Click to go to this item";
+}
+
+.shadowLayer {
+  background: none;
+  position: relative;
+  top: -100%;
+  margin-right: 40px;
+  height: 100%;
+  width: 400px;
+  float: right;
+  z-index: -2;
+  box-shadow: -2px 5px 10px #000;
+}
+
+.itemsLabel {
+    box-sizing: border-box;
+    float: left;
+    width: 400px;
+    height: 40px;
+    padding-top: 10px;
+    font-size: 22px;
+    background: #eaefec;
+    text-align: center;
+    z-index: 3;
+    border-bottom: 1px solid #444;
+}
+
+@keyframes scroll {
+  
+  /*item height mult by num of items*/
+  0% {top: 0px;}
+  100% {top: -1200px;}
+}
