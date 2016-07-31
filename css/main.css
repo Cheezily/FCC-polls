@@ -150,16 +150,74 @@ body {
     margin: 60px auto;
     padding: 30px;
     position: absolute;
-    top: 1000px;
+    top: 0;
     left: 0;
     right: 0;
     box-shadow: 0px 5px 8px #000;
-    animation: loginGreeting 1s forwards .1s;
 }
 
-@keyframes loginGreeting {
+.loginGreetingLoad {
+    animation: loginGreetingLoad 1s forwards .1s;
+}
+
+@keyframes loginGreetingLoad {
     0% {top: -1000px; opacity: 0;}
     100% {top: 0px; opacity: 1;}
+}
+
+.loginStatic {
+    opacity: 1;
+}
+
+.loginGreeting form {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    border: 1px solid red;
+}
+
+.loginGreetingHideForm {
+    animation: loginGreetingHideForm 1s forwards;
+}
+
+@keyframes loginGreetingHideForm {
+    0% {height: 100%;}
+    100% {height: 0;}
+}
+
+.loginGreeting label {
+    display: inline-block;
+    width: 150px;
+    font-size: 22px;
+    margin-top: 30px;
+}
+
+.loginGreeting input {
+    height: 40px;
+    width: 400px;
+}
+
+.loginWarning {
+    color: red;
+    margin-left: 15px;
+}
+/*------------------------------*/
+
+
+/*DASHBOARD PAGE*/
+.dashboard {
+    box-sizing: border-box;
+    width: 920px;
+    height: 600px;
+    background: #eaefec;
+    margin: 60px auto;
+    padding: 30px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0px 5px 8px #000;
 }
 
 

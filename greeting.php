@@ -6,12 +6,20 @@
             
         <div class='greeting'>
           <div class='leftSideStuff'>
-            <h2>Already a registered user?</h2>
-            <form method="get" action="">
+            <h1>Already a registered user?</h1>
+            <form method="post" action="">
                 <input type="submit" value="Login" name="login">
             </form>
-            <form method="get" action="">
+            <form method="post" action="">
                 <input type="submit" value="New User" name="newUser">
+            </form>
+            <hr>
+            <h1>Search for polls by keyword:</h1>
+            <form method='get' action=''>
+                <label for='keywords'>*Separate each keyword with a comma</label>
+                <br>
+                <input type='text' name='keywords' placeholder='keywords'>
+                <input type='submit' value='Search!'>
             </form>
           </div>
 
