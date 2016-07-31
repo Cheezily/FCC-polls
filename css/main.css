@@ -1,13 +1,33 @@
 body {
   background-image: url('../images/wood.jpg');
   font-family: sans-serif;
+  overflow: hidden;
+}
+
+/*HOME PAGE*/
+.greeting {
+  width: 960px;
+  height: 100%;
+  background: none;
+  margin: 0 auto;
 }
 
 .container {
-  width: 960px;
-  height: 500px;
-  margin: 30px auto;
-  background: none;
+  width: 100%;
+  height: 600px;
+  position: absolute;
+  top: 60px;
+  left: 20px;
+  right: 0;
+}
+
+.hideContainer {
+    animation: hideContainer 2s forwards;
+}
+
+@keyframes hideContainer {
+    0% {top: 60px;}
+    100% {top: -1000px; opacity: 0;}
 }
 
 .leftSideStuff {
@@ -23,7 +43,7 @@ body {
 .items {
   background: none;
   width: 400px;
-  height: 460px;
+  height: 560px;
   float: right;
   margin-right: 40px;
   z-index: -1;
@@ -117,3 +137,28 @@ body {
   0% {top: 0px;}
   100% {top: -1200px;}
 }
+
+/*------------------------------*/
+
+/*LOGIN PAGE*/
+.loginGreeting {
+    opacity: 0;
+    width: 920px;
+    height: 600px;
+    background: #eaefec;
+    margin: 60px auto;
+    position: absolute;
+    top: 1000px;
+    left: 0;
+    right: 0;
+    animation: loginGreeting 1s forwards;
+}
+
+@keyframes loginGreeting {
+    0% {top: -1000px; opacity: 0;}
+    100% {top: 0px; opacity: 1;}
+}
+
+
+
+/*------------------------------*/

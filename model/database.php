@@ -1,5 +1,5 @@
 <?php
-    $dsn = 'mysql:host=localhost;dbname=FCCpolls';
+    $dsn = 'mysql:host=localhost;dbname=FCC-polls';
     $username = 'root';
     $password = '';
 
