@@ -22,7 +22,7 @@ body {
 }
 
 .hideContainer {
-    animation: hideContainer 2s forwards;
+    animation: hideContainer 1s forwards;
 }
 
 @keyframes hideContainer {
@@ -142,16 +142,19 @@ body {
 
 /*LOGIN PAGE*/
 .loginGreeting {
+    box-sizing: border-box;
     opacity: 0;
     width: 920px;
     height: 600px;
     background: #eaefec;
     margin: 60px auto;
+    padding: 30px;
     position: absolute;
     top: 1000px;
     left: 0;
     right: 0;
-    animation: loginGreeting 1s forwards;
+    box-shadow: 0px 5px 8px #000;
+    animation: loginGreeting 1s forwards .1s;
 }
 
 @keyframes loginGreeting {
