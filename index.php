@@ -5,15 +5,16 @@ session_start();
 include "model/database.php";
 
 //handle if the user clicked the login button
-if (isset($_GET['login'])) {
+if (isset($_POST['login'])) {
     $login = TRUE;
 }
 
-//handle if the user clicks a logout button
-if (isset($_POST['logout'])) {
+//handle if the user clicks a logout button or cancels login
+if (isset($_POST['logout']) || isset($_POST['cancel'])) {
     $_SESSION = array();
     session_destroy();
     header("Location: index.php");
+    die();
 }
 
 if (isset($_GET['newUser'])) {

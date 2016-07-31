@@ -14,6 +14,7 @@ if(isset($loginError)) { ?>
             <input type='text' name='username'><br>
             <label for='loginPW'>Password</label><br>
             <input type='password' name='password'><br>
-            <input type='submit' name='checkUsernamePW' value='Login'>
+            <input type='submit' name='checkUsernamePW' value='Login'><br>
+            <input type='submit' name='cancel' value='Cancel'>
         </form>
     </div>
