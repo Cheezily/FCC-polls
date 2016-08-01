@@ -19,7 +19,7 @@ if (isset($_POST['logout']) || isset($_POST['cancel'])) {
 
 if (isset($_GET['newUser'])) {
     require_once "model/pollsDB.php";
-    var_dump(getPollsForUser("1"));
+    var_dump(getPollsForUser(1));
 }
 
 //handles username and password being passed from the login page

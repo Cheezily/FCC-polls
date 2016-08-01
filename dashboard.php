@@ -25,8 +25,21 @@ $polls = getPollsForUser($_SESSION['userID']);
 <body>
 
 <?php if(isset($_SESSION['userID'])) { ?>
-    <?php if(isset($_SESSION['loadingDashboard'])) { ?>
-        <div class='dashboard dashboardLoad'>
+    <?php if($_SESSION['loadingDashboard'] == TRUE) { ?>
+        <div class='dashboard '>
+            
+            <div class="loginGreeting loginGreetingHideForm">
+                <form method="post" action="">
+                    <label for='loginName'>Username</label>
+                    <br>
+                    <input type='text' name='username'><br>
+                    <label for='loginPW'>Password</label><br>
+                    <input type='password' name='password'><br>
+                    <input type='submit' name='checkUsernamePW' value='Login'><br>
+                    <input type='submit' name='cancel' value='Cancel'>
+                </form>
+            </div>
+
     <?php $_SESSION['loadingDashboard'] = FALSE; } else { ?>
         <div class='dashboard'>
     <?php } ?>
