@@ -1,9 +1,11 @@
 
-<?php session_start();
-if(isset($loginError)) { ?>
+<?php if(isset($loginError)) { ?>
     <div class="loginGreeting loginStatic">
+<?php } elseif ($dashboardLoad == TRUE) {echo "CHECK!"; ?>
+        
+    <div class="loginGreeting loginGreetingUnload">
 <?php } else { ?>
-    <div class="loginGreeting loginGreetingLoad">
+    <div class="loginGreeting">
 <?php } ?>
         <form method="post" action="">
             <label for='loginName'>Username</label>

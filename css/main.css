@@ -22,12 +22,26 @@ body {
 }
 
 .hideContainer {
-    animation: hideContainer 1s forwards;
+    animation: hideContainer 2s forwards;
 }
+/*
+@keyframes hideContainer {
+    0% {opacity: 1;}
+    40% {opacity: 0;}
+    100% {z-index: -1;}
+}
+*/
 
 @keyframes hideContainer {
-    0% {top: 60px;}
-    100% {top: -1000px; opacity: 0;}
+    0% {top: 60px; height: 600px;}
+    10% {top: 250px; height: 600px;}
+    40% {top: -1000px;
+        transform: rotate(80deg);}
+    100% {z-index: -1; 
+          top: -2000px;
+          left: 100%;
+          height: 0;
+          opacity: 0;}
 }
 
 .leftSideStuff {
@@ -143,7 +157,7 @@ body {
 /*LOGIN PAGE*/
 .loginGreeting {
     box-sizing: border-box;
-    opacity: 0;
+    opacity: 1;
     width: 920px;
     height: 600px;
     background: #eaefec;
@@ -176,19 +190,34 @@ body {
     margin: 0 auto;
 }
 
-.loginGreetingHideForm {
+.loginGreetingUnload {
+    opacity: 1;
     box-sizing: border-box;
     margin: 0 auto;
     box-shadow: none;
-    animation: loginGreetingHideForm 3s forwards;
+    top: 60px;
+    z-index: 2;
+    animation: loginGreetingUnload 2s forwards;
 }
-
-@keyframes loginGreetingHideForm {
+/*
+@keyframes loginGreetingUnload {
     0% {opacity: 1;}
-    33% {opacity: 0;}
+    40% {opacity: 0;}
     100% {z-index: -1;}
 }
-
+*/
+@keyframes loginGreetingUnload {
+    0% {top: 60px; height: 600px;}
+    10% {top: 250px; height: 600px;}
+    40% {top: -1000px;
+        transform: rotate(-80deg);}
+    100% {z-index: -1; 
+          top: -2000px;
+          left: -100%;
+          height: 0;
+          opacity: 0;}
+}    
+    
 .loginGreeting label {
     display: inline-block;
     width: 150px;
@@ -229,10 +258,84 @@ body {
 }
 
 @keyframes dashboardLoad {
-    0% {opacity: 0;}
+    0% {opacity: 1;}
     100% {opacity: 1;}
 }
 
+.dashboardFadeOut {
+    top: 0;
+    animation: dashboardFadeOut .5s forwards .5s;
+}
 
+@keyframes dashboardFadeOut {
+    0% {opacity: 1;}
+    100% {opacity: .2;}
+}
+
+.dashboardFadeIn {
+    opacity: .2;
+    animation: dashboardFadeIn .5s forwards .5s;
+}
+
+@keyframes dashboardFadeIn {
+    0% {opacity: .2}
+    100% {opacity: 1;}
+}
+
+.keepDashboardFaded {
+    opacity: .2;
+}
+
+/*------------------------------*/
+
+/*NEW POLL DIALOG WINDOW*/
+.newPoll {
+    box-sizing: border-box;
+    width: 500px;
+    height: 500px;
+    background: #77b;
+    position: absolute;
+    top: 100px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 2;
+    box-shadow: 0px 5px 8px #000;
+}
+
+.newPollLoad {
+    opacity: 0;
+    animation: newPollLoad 1s forwards;
+}
+
+@keyframes newPollLoad {
+    0% {top: -1000px;}
+    100% {top: 100px;
+           opacity: 1;}
+}
+
+.newPollUnload {
+    box-sizing: border-box;
+    width: 500px;
+    height: 500px;
+    animation: newPollUnload 1s forwards;
+}
+
+@keyframes newPollUnload {
+    0% {top: 100px; height: 500px;}
+    20% {top: 200px; height: 500px;}
+    90% {top: -1000px; height: 500px;}
+    100% {top: -1000px; opacity: 0;
+    height: 0;}
+}
+
+.removeOption {
+    background: none;
+    color: white;
+    font-weight: bold;
+    font-size: 22px;
+    border: none;
+    outline: none;
+}
 
 /*------------------------------*/
