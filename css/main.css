@@ -338,4 +338,14 @@ body {
     outline: none;
 }
 
+.loadOptionInput, .loadOptionInput label {
+    opacity: 0;
+    animation: loadOptionInput .5s forwards;
+}
+
+@keyframes loadOptionInput {
+    0% {opacity: 0; height: 0;}
+    100% {opacity: 1; height: 50px;}
+}
+
 /*------------------------------*/

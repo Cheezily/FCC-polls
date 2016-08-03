@@ -73,17 +73,21 @@ if (isset($_POST['addPollOption'])) {
     var_dump($options);
 }
 if (isset($_POST['removeOption'])) {
+    $numPollOptions = filter_input(INPUT_POST, "numPollOptions", FILTER_VALIDATE_INT);
     $newPoll = TRUE;
     $dashboardLoaded = TRUE;
     $pollDialogOpen = TRUE;
     $keepDashboardFaded = TRUE;
-    $removeOption = filter_input(INPUT_POST, 'removeOption');
+    $removeOption = $_POST['removeOption'];
+    //$removeOption = filter_input(INPUT_POST, 'removeOption', FILTER_VALIDATE_INT);
     $pollTitle = filter_input(INPUT_POST, 'pollTitle');
     $options = $_POST['options'];
-    echo "INDEX: ".$removeOption - 1;
-    var_dump($options);
+    echo "INDEX: ".$removeOption."<br>";
+    echo "BEFORE: ".var_dump($options)."<br>";
     
-    array_splice($options, $removeOption - 1, 1);
+    array_splice($options, $removeOption, 1);
+    $numPollOptions = count($options);
+    echo "AFTER: ".var_dump($options);
 }
 
 ?>
