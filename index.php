@@ -57,6 +57,7 @@ if (isset($_POST['newPollCancel'])) {
     $newPollCancel = TRUE;
 }
 if (isset($_POST['newPollSubmit'])) {
+    $numPollOptions = filter_input(INPUT_POST, "numPollOptions", FILTER_VALIDATE_INT);
     $newPollSubmit = TRUE;
     var_dump($_POST['options']);
 }
@@ -107,7 +108,7 @@ if (isset($_POST['removeOption'])) {
     
     <?php if(isset($_SESSION['userID'])) {
         include "dashboard.php";
-        if ($newPoll || $newPollCancel) {
+        if ($newPoll || $newPollCancel || $newPollSubmit) {
             include "newPoll.php";
         }
         die();

@@ -16,19 +16,19 @@
                     $thisOption = '';
                 }
                 if ($i < 2) {
-                    echo "<label for='option".$i."'>Option ".$i."</label><br>";
+                    echo "<label for='option".$i."'>Option ".($i + 1)."</label><br>";
                     echo "<input type='text' id='option".$i."' name='options[".$i."]' value='".$thisOption."' required><br>"; 
                 } else {
                     //make the newest blank option input have a css loading effect
                     if ($i == $numPollOptions - 1) {
                         echo "<div class='loadOptionInput'>";
-                        echo "<label for='option".$i."'>Option ".$i."</label><br>";
+                        echo "<label for='option".$i."'>Option ".($i + 1)."</label><br>";
                         echo "<input type='text' id='option".$i."' name='options[".$i."]' value='".$thisOption."'>";
                         echo "<button type='submit' name='removeOption' value=".$i." class='removeOption'>-</button><br>";
                         echo "</div>";
                     } else {
                         echo "<div>";
-                        echo "<label for='option".$i."'>Option ".$i."</label><br>";
+                        echo "<label for='option".$i."'>Option ".($i + 1)."</label><br>";
                         echo "<input type='text' id='option".$i."' name='options[".$i."]' value='".$thisOption."'>";
                         echo "<button type='submit' name='removeOption' value=".$i." class='removeOption'>-</button><br>";
                         echo "</div>";
@@ -39,7 +39,7 @@
             } ?>
             <input type="hidden" name='numPollOptions' value=<?php echo $numPollOptions; ?>>
             <input type='submit' name='addPollOption' value='Add Option'>
-            <input type='submit' name='submitPoll' value='Submit'>
+            <input type='submit' name='newPollSubmit' value='Submit'>
         </form>
         <form method="post" action="index.php">
             <input type="hidden" name='numPollOptions' value=<?php echo $numPollOptions; ?>>

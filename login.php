@@ -1,7 +1,7 @@
 
 <?php if(isset($loginError)) { ?>
     <div class="loginGreeting loginStatic">
-<?php } elseif ($dashboardLoad == TRUE) {echo "CHECK!"; ?>
+<?php } elseif ($dashboardLoad == TRUE) { ?>
         
     <div class="loginGreeting loginGreetingUnload">
 <?php } else { ?>
