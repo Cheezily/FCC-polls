@@ -4,7 +4,7 @@ require_once "database.php";
 function getPollsForUser($pollUserID) {
     global $db;
     
-    $query = "SELECT * FROM polls WHERE userId=:userID";
+    $query = "SELECT * FROM polls WHERE userId=:userID ORDER BY dateCreated DESC";
     $statement = $db->prepare($query);
     $statement->bindValue(":userID", $pollUserID);
     $statement->execute();
@@ -14,17 +14,18 @@ function getPollsForUser($pollUserID) {
 
 
 
-function savePoll($userID, $title, $options, $expiration, $keywordString) {
+function savePoll($userID, $pollTitle, $optionsToSave, $pollExpiration, $keywordString) {
     global $db;
     $optionsAsText = serialize($options);
     
-    $query = "INSERT INTO polls('userId', 'title', 'options', 'dateCreated', 'dateExpiration', 'keywordList') ".
-            "VALUES (:userID, :title, :options, :expiration, :keywords)";
+    $query = "INSERT INTO polls(userID, title, options, dateCreated, dateExpiration, keywordList) ".
+            "VALUES (:userID, :title, :options, :dateCreated, :expiration, :keywords)";
     $statement = $db->prepare($query);
     $statement->bindValue(":userID", $userID);
-    $statement->bindValue(":title", $title);
-    $statement->bindValue(":options", $optionsAsText);
-    $statement->bindValue(":expiration", $expiration);
+    $statement->bindValue(":title", $pollTitle);
+    $statement->bindValue(":options", $optionsToSave);
+    $statement->bindValue(":dateCreated", date("Y-m-d H:i:s"));
+    $statement->bindValue(":expiration", $pollExpiration);
     $statement->bindValue(":keywords", $keywordString);
     $statement->execute();
     
@@ -37,7 +38,7 @@ function savePoll($userID, $title, $options, $expiration, $keywordString) {
         array_push($keywordArray, $scrubedKeyword);
     }
     
-    var_dump($keywordArray);
+    //var_dump($keywordArray);
     
 }
 

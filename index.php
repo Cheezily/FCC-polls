@@ -57,9 +57,28 @@ if (isset($_POST['newPollCancel'])) {
     $newPollCancel = TRUE;
 }
 if (isset($_POST['newPollSubmit'])) {
+    require "model/pollsDB.php";
     $numPollOptions = filter_input(INPUT_POST, "numPollOptions", FILTER_VALIDATE_INT);
     $newPollSubmit = TRUE;
-    var_dump($_POST['options']);
+    $pollTitle = filter_input(INPUT_POST, 'pollTitle');
+    $options = $_POST['options'];
+    $pollExpiration = returnDBTime($_POST['pollExpiration']);
+    $keywordString = '';
+    //get the list of submitted options into an array ("option" -> votes)
+    //the last option that is submitted can be blank, so it will be removed
+    $optionsToSave = array();
+    foreach($options as $option) {
+        if ($option != "") {
+            $optionWithZeroVotes[0] = htmlspecialchars($option);
+            $optionWithZeroVotes[1] = 0;
+            array_push($optionsToSave, $optionWithZeroVotes);
+        }
+    }
+    $optionsToSave = serialize($optionsToSave);
+    
+    savePoll($_SESSION['userID'], $pollTitle, $optionsToSave, $pollExpiration, $keywordString);
+    
+    
 }
 if (isset($_POST['addPollOption'])) {
     $numPollOptions = filter_input(INPUT_POST, "numPollOptions", FILTER_VALIDATE_INT);
@@ -68,10 +87,13 @@ if (isset($_POST['addPollOption'])) {
     $dashboardLoaded = TRUE;
     $pollDialogOpen = TRUE;
     $keepDashboardFaded = TRUE;
+    $pollExpiration = $_POST['pollExpiration'];
+    //echo "EXP to save: ".$dateToSave."<br>";
+    //echo "EXP: ".$_POST['pollExpiration']."<br>";
     $pollTitle = filter_input(INPUT_POST, 'pollTitle');
     $options = $_POST['options'];
     //$options = filter_input(INPUT_POST, "options");
-    var_dump($options);
+    //var_dump($options);
 }
 if (isset($_POST['removeOption'])) {
     $numPollOptions = filter_input(INPUT_POST, "numPollOptions", FILTER_VALIDATE_INT);
@@ -80,7 +102,7 @@ if (isset($_POST['removeOption'])) {
     $pollDialogOpen = TRUE;
     $keepDashboardFaded = TRUE;
     $removeOption = $_POST['removeOption'];
-    //$removeOption = filter_input(INPUT_POST, 'removeOption', FILTER_VALIDATE_INT);
+    $pollExpiration = $_POST['pollExpiration'];
     $pollTitle = filter_input(INPUT_POST, 'pollTitle');
     $options = $_POST['options'];
     echo "INDEX: ".$removeOption."<br>";
@@ -89,6 +111,14 @@ if (isset($_POST['removeOption'])) {
     array_splice($options, $removeOption, 1);
     $numPollOptions = count($options);
     echo "AFTER: ".var_dump($options);
+}
+
+//for getting the correct time format for the poll expiration. 
+//This is what will be saved in the db for the expiration time
+function returnDBTime($htmlToConvert) {
+    $htmlDate = substr($htmlToConvert, 0, 10)." ";
+    $htmlTime = substr($htmlToConvert, 11);
+    return date("Y-m-d H:i:s", strtotime($htmlDate.$htmlTime));
 }
 
 ?>

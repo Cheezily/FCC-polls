@@ -8,7 +8,9 @@
 <?php } ?>
         <form method="post" action="index.php">
             <label for='pollTitle'>Title</label><br>
-            <input type='text' name='pollTitle' value="<?php echo $pollTitle; ?>" required><br>
+            <input id='pollTitle' type='text' name='pollTitle' value="<?php echo $pollTitle; ?>" required><br>
+            <label for='pollExpiration'>Expiration Date (Optional)</label><br>
+            <input id='pollExpiration' type='datetime-local' name='pollExpiration' value="<?php echo $pollExpiration; ?>"><br>
             <?php for ($i = 0; $i < $numPollOptions; $i++) {
                 if (!empty($options[$i])) {
                     $thisOption = htmlspecialchars($options[$i]);
@@ -17,10 +19,10 @@
                 }
                 if ($i < 2) {
                     echo "<label for='option".$i."'>Option ".($i + 1)."</label><br>";
-                    echo "<input type='text' id='option".$i."' name='options[".$i."]' value='".$thisOption."' required><br>"; 
+                    echo "<input type='text' id='option".$i."' name='options[".$i."]' value='".$thisOption."' required><br>";
                 } else {
                     //make the newest blank option input have a css loading effect
-                    if ($i == $numPollOptions - 1) {
+                    if ($i == $numPollOptions - 1 && !$removeOption) {
                         echo "<div class='loadOptionInput'>";
                         echo "<label for='option".$i."'>Option ".($i + 1)."</label><br>";
                         echo "<input type='text' id='option".$i."' name='options[".$i."]' value='".$thisOption."'>";

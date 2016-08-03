@@ -13,7 +13,7 @@ require_once "model/pollsDB.php";
 $polls = getPollsForUser($_SESSION['userID']);
 
 ?>
-
+<!--
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,6 +23,7 @@ $polls = getPollsForUser($_SESSION['userID']);
 </title>
 </head>
 <body>
+-->
     <?php if ($dashboardLoad == TRUE) {include "login.php"; ?>
         <div class='dashboard dashboardLoad'>
     <?php 
@@ -38,17 +39,30 @@ $polls = getPollsForUser($_SESSION['userID']);
         <?php } else { ?>
             <div>   
         <?php } ?>
-                <form method='post' action='index.php'>
+                <?php 
+                    echo "<div class='dashboardUsername'>";
+                    echo "<span>Welcome, ".$_SESSION['username']."!</span>";
+                ?>
+                <form class='dashboardLogout' method='post' action='index.php'>
                     <input type='submit' name='logout' value='Log Out'>
                 </form>
-                <h1>this is the dashboard</h1>
+                <?php echo "</div>"; ?>
+                <?php if(!empty($polls)) {
+                    forEach($polls as $poll) {
+                        echo "<div class='dashboardPoll'>";
+                        echo var_dump($poll);
+                        echo "</div>";
+                    }
+                } else { ?>
+                <h2>There are no polls to display! Click below to create a new one.</h2>
+                <?php } ?>
                 <form method="post" action="index.php">
                     <input type="submit" name="newPoll" value="Create New Poll">
                 </form>
             </div>
         </div>
 
-
+<!--
 </body>
 </html>
-        
+-->
