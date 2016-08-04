@@ -58,14 +58,23 @@ $polls = getPollsForUser($_SESSION['userID']);
                         }
                         
                         echo "<div class='dashboardPoll'>";
-                        echo "<p class='dashboardPollTitle'>".$poll['title']."</p>";
-                        echo "<p class='dashboardVotes'>Votes: ".$votes."</p>";
-                        if (!empty($poll['dateExpiration'])) {
+                        echo "<div class='dashboardPollTitle'>".$poll['title']."</div>";
+                        echo "<div class='dashboardPollInfo'>";
+                        echo "<ps class='dashboardVotes'>Votes: ".$votes."</p>";
+                        if (substr($poll['dateExpiration'],0,4) != '0000') {
                             echo "<p class='dashboardExp'>Expiration: ".$poll['dateExpiration']."</p>";
                         } else {
                             echo "<p class='dashboardExp'>Expiration: None</p>";
                         }
-                        
+                        echo "</div>";
+                        echo "<form method='get' action='index.php'>";
+                        echo "<input type='hidden' name='poll' value='".$poll['pollID']."'>";
+                        echo "<button class='goToPoll' type='submit' value='poll'>Go To Poll</button>";
+                        echo "</form>";
+                        echo "<form method='post' action='index.php'>";
+                        echo "<input type='hidden' name='poll' value='".$poll['pollID']."'>";
+                        echo "<button class='deletePoll' type='submit' value='delete'>Delete Poll</button>";
+                        echo "</form>";
                         echo "</div>";
                     }
                 } else { ?>

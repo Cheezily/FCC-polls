@@ -4,9 +4,12 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/xampp/htdocs/FCC-polls/index.php</file>
+            <file>file:/C:/xampp/htdocs/FCC-polls/model/pollsDB.php</file>
+            <file>file:/C:/xampp/htdocs/FCC-polls/dashboard.php</file>
             <file>file:/C:/xampp/htdocs/FCC-polls/newPoll.php</file>
             <file>file:/C:/xampp/htdocs/FCC-polls/login.php</file>
             <file>file:/C:/xampp/htdocs/FCC-polls/css/main.css</file>
+            <file>file:/C:/xampp/htdocs/FCC-polls/model/database.php</file>
         </group>
     </open-files>
 </project-private>

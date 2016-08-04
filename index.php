@@ -62,8 +62,7 @@ if (isset($_POST['newPollSubmit'])) {
     $newPollSubmit = TRUE;
     $pollTitle = filter_input(INPUT_POST, 'pollTitle');
     $options = $_POST['options'];
-    echo "DATESET: ".$_POST['pollExpiration'];
-    if (isset($_POST['pollExpiration'])) {
+    if (!empty($_POST['pollExpiration'])) {
         $pollExpiration = returnDBTime($_POST['pollExpiration']);
     } else {
         $pollExpiration = '';

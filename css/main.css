@@ -293,9 +293,55 @@ body {
 
 .dashboardPoll {
     box-sizing: border-box;
+    height: 100px;
+    width: 100%;
     border: 1px solid #333;
     margin: 10px auto;
+    box-shadow: 0px 2px 1px #000;
+}
+
+.dashboardPollTitle {
+    box-sizing: border-box;
+    font-size: 22px;
+    font-weight: bold;
+    float: left;
+    width: 420px;
+    height: 100%;
     padding: 10px;
+}
+
+.dashboardPollInfo {
+    box-sizing: border-box;
+    width: 300px;
+    height: 100%;
+    padding: 10px;
+    float: left;
+    text-align: left;
+    border-left: 1px dashed #333;
+}
+
+.goToPoll {
+    display: block;
+    box-sizing: border-box;
+    height: 49px;
+    width: 120px;
+    float: right;
+    background: green;
+    color: white;
+    font-weight: bold;
+    border: none;
+}
+
+.deletePoll {
+    display: block;
+    box-sizing: border-box;
+    height: 49px;
+    width: 120px;
+    float: right;
+    background: red;
+    color: white;
+    font-weight: bold;
+    border: none;
 }
 
 /*------------------------------*/
