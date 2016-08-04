@@ -2,6 +2,7 @@ body {
   background-image: url('../images/wood.jpg');
   font-family: sans-serif;
   overflow: hidden;
+  color: #555;
 }
 
 /*HOME PAGE*/
@@ -48,7 +49,7 @@ body {
   box-sizing: border-box;
   padding: 20px;
   float: left;
-  background: #eaefec;
+  background: #fff;
   width: 520px;
   height: 100%;
   box-shadow: 0px 5px 8px #000;
@@ -108,7 +109,7 @@ body {
   margin: -11px auto;
   z-index: 5;
   box-shadow: -2px 5px 10px #000;
-  background: #eaefec;
+  background: #fff;
   border: none;
   transition: background .2s, width .2s linear;
 }
@@ -139,7 +140,7 @@ body {
     height: 40px;
     padding-top: 10px;
     font-size: 22px;
-    background: #eaefec;
+    background: #fff;
     text-align: center;
     z-index: 3;
     border-bottom: 1px solid #444;
@@ -160,7 +161,7 @@ body {
     opacity: 1;
     width: 920px;
     height: 600px;
-    background: #eaefec;
+    background: #fff;
     margin: 60px auto;
     padding: 30px;
     position: absolute;
@@ -242,19 +243,45 @@ body {
     box-sizing: border-box;
     width: 920px;
     height: 600px;
-    background: #eaefec;
+    background: #fff;
+    color: #666;
     margin: 60px auto;
-    padding: 30px;
+    padding: 65px 0px 0;
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     box-shadow: 0px 5px 8px #000;
-    overflow: scroll;
+    overflow-y: scroll;
+}
+
+.dashboardHeader {
+    box-sizing: border-box;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    height: 60px;
+    width: 920px;
+    padding: 15px 100px;
+    background: #eee;
+    z-index: 4;
+    box-shadow: 0px 3px 5px #000;
+}
+
+.dashboardHeader h1 {
+    display: inline-block;
+    margin: 0;
 }
 
 .dashboardLogout {
     display: inline-block;
+    float: right;
+}
+
+.newPollButton {
+    float: right;
 }
 
 .dashboardLoad {
@@ -294,10 +321,11 @@ body {
 .dashboardPoll {
     box-sizing: border-box;
     height: 100px;
-    width: 100%;
-    border: 1px solid #333;
-    margin: 10px auto;
+    width: 840px;
+    border: 1px solid #bbb;
+    margin: 15px auto;
     box-shadow: 0px 2px 1px #000;
+    border-radius: 10px;
 }
 
 .dashboardPollTitle {
@@ -305,7 +333,7 @@ body {
     font-size: 22px;
     font-weight: bold;
     float: left;
-    width: 420px;
+    width: 400px;
     height: 100%;
     padding: 10px;
 }
@@ -317,31 +345,37 @@ body {
     padding: 10px;
     float: left;
     text-align: left;
-    border-left: 1px dashed #333;
+    border-left: 1px solid #bbb;
 }
 
 .goToPoll {
     display: block;
     box-sizing: border-box;
-    height: 49px;
-    width: 120px;
+    height: 30px;
+    width: 100px;
     float: right;
-    background: green;
-    color: white;
+    background: #5b5;
+    color: #fff;
+    margin: 9px;
     font-weight: bold;
     border: none;
+    border-radius: 8px;
+    outline: none;
 }
 
 .deletePoll {
     display: block;
     box-sizing: border-box;
-    height: 49px;
-    width: 120px;
+    height: 30px;
+    width: 100px;
     float: right;
-    background: red;
-    color: white;
+    background: #c55;
+    color: #fff;
+    margin: 9px;
     font-weight: bold;
     border: none;
+    border-radius: 8px;
+    outline: none;
 }
 
 /*------------------------------*/
@@ -350,26 +384,38 @@ body {
 .newPoll {
     box-sizing: border-box;
     width: 500px;
-    height: 500px;
-    background: #77b;
+    height: 480px;
+    background: #eee;
     position: absolute;
-    top: 100px;
+    top: 145px;
     left: 0;
     right: 0;
     margin: 0 auto;
+    padding: 30px;
     z-index: 2;
-    box-shadow: 0px 5px 8px #000;
+    box-shadow: 0px 1px 2px #000;
+    overflow-y: scroll;
+    border: 1px solid #333;
+}
+
+.newPollInput {
+    width: 90%;
+    height: 25px;
+    margin-bottom: 15px;
+}
+
+.optional {
+    color: #777;
 }
 
 .newPollLoad {
-    opacity: 0;
+    z-index: 2;
     animation: newPollLoad 1s forwards;
 }
 
 @keyframes newPollLoad {
     0% {top: -1000px;}
-    100% {top: 100px;
-           opacity: 1;}
+    100% {top: 145px;}
 }
 
 .newPollUnload {
@@ -380,24 +426,31 @@ body {
 }
 
 @keyframes newPollUnload {
-    0% {top: 100px; height: 500px;}
-    20% {top: 200px; height: 500px;}
+    0% {top: 145px; height: 500px;}
+    20% {top: 250px; height: 500px;}
     90% {top: -1000px; height: 500px;}
-    100% {top: -1000px; opacity: 0;
-    height: 0;}
+    100% {top: -1000px; height: 0;}
 }
 
 .removeOption {
-    background: none;
+    display: inline-block;
+    background: #e44;
+    position: relative;
+    top: 3px;
+    width: 30px;
+    height: 30px;
+    margin: 0 0 0 5px;
     color: white;
     font-weight: bold;
-    font-size: 22px;
+    font-size: 24px;
     border: none;
     outline: none;
+    border-radius: 50%;
 }
 
 .loadOptionInput, .loadOptionInput label {
     opacity: 0;
+    margin-bottom: 20px;
     animation: loadOptionInput .5s forwards;
 }
 
@@ -406,5 +459,11 @@ body {
     40% {height: 50px;}
     100% {opacity: 1; height: 50px;}
 }
+
+/*------------------------------*/
+
+/*CONFIRM POLL DELETION DIALOG*/
+
+
 
 /*------------------------------*/

@@ -7,6 +7,7 @@
 <?php } else { ?>
     <div class="loginGreeting">
 <?php } ?>
+        <h1>User Login:</h1>
         <form method="post" action="">
             <label for='loginName'>Username</label>
             <?php if(isset($loginError)) {

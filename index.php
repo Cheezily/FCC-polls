@@ -20,8 +20,7 @@ if (isset($_POST['logout']) || isset($_POST['cancel'])) {
 
 //JUST A TEST. DISREGARD
 if (isset($_GET['newUser'])) {
-    require_once "model/pollsDB.php";
-    var_dump(getPollsForUser(1));
+    $newUser = TRUE;
 }
 
 //handles username and password being passed from the login page
@@ -110,12 +109,12 @@ if (isset($_POST['removeOption'])) {
     $pollExpiration = $_POST['pollExpiration'];
     $pollTitle = filter_input(INPUT_POST, 'pollTitle');
     $options = $_POST['options'];
-    echo "INDEX: ".$removeOption."<br>";
-    echo "BEFORE: ".var_dump($options)."<br>";
+    //echo "INDEX: ".$removeOption."<br>";
+    //echo "BEFORE: ".var_dump($options)."<br>";
     
     array_splice($options, $removeOption, 1);
     $numPollOptions = count($options);
-    echo "AFTER: ".var_dump($options);
+    //echo "AFTER: ".var_dump($options);
 }
 
 //for getting the correct time format for the poll expiration. 
@@ -137,6 +136,8 @@ function returnDBTime($htmlToConvert) {
 </title>
 </head>
 <body>
+    
+    <?php if(isset($newUser)) { include "newUser.php";} ?>
     
     <!--$login comes from whether a login request has been sent to the index page-->
     <?php if(isset($login) || $loginError) { include "login.php"; } ?>
