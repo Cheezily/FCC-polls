@@ -49,8 +49,23 @@ $polls = getPollsForUser($_SESSION['userID']);
                 <?php echo "</div>"; ?>
                 <?php if(!empty($polls)) {
                     forEach($polls as $poll) {
+                        var_dump($poll);
+                        $optionList = unserialize($poll['options']);
+                        
+                        $votes = 0;
+                        forEach($optionList as $option) {
+                            $votes += $option[1];
+                        }
+                        
                         echo "<div class='dashboardPoll'>";
-                        echo var_dump($poll);
+                        echo "<p class='dashboardPollTitle'>".$poll['title']."</p>";
+                        echo "<p class='dashboardVotes'>Votes: ".$votes."</p>";
+                        if (!empty($poll['dateExpiration'])) {
+                            echo "<p class='dashboardExp'>Expiration: ".$poll['dateExpiration']."</p>";
+                        } else {
+                            echo "<p class='dashboardExp'>Expiration: None</p>";
+                        }
+                        
                         echo "</div>";
                     }
                 } else { ?>

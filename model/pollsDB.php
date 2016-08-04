@@ -17,6 +17,7 @@ function getPollsForUser($pollUserID) {
 function savePoll($userID, $pollTitle, $optionsToSave, $pollExpiration, $keywordString) {
     global $db;
     $optionsAsText = serialize($options);
+    echo "EXPSET: ".$pollExpiration;
     
     $query = "INSERT INTO polls(userID, title, options, dateCreated, dateExpiration, keywordList) ".
             "VALUES (:userID, :title, :options, :dateCreated, :expiration, :keywords)";

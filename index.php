@@ -62,7 +62,13 @@ if (isset($_POST['newPollSubmit'])) {
     $newPollSubmit = TRUE;
     $pollTitle = filter_input(INPUT_POST, 'pollTitle');
     $options = $_POST['options'];
-    $pollExpiration = returnDBTime($_POST['pollExpiration']);
+    echo "DATESET: ".$_POST['pollExpiration'];
+    if (isset($_POST['pollExpiration'])) {
+        $pollExpiration = returnDBTime($_POST['pollExpiration']);
+    } else {
+        $pollExpiration = '';
+    }
+    
     $keywordString = '';
     //get the list of submitted options into an array ("option" -> votes)
     //the last option that is submitted can be blank, so it will be removed
