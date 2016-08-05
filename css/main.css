@@ -155,7 +155,7 @@ body {
 
 /*------------------------------*/
 
-/*LOGIN PAGE*/
+/*LOGIN PAGE and NEW USER REGISTRATION*/
 .loginGreeting {
     box-sizing: border-box;
     opacity: 1;
@@ -163,7 +163,7 @@ body {
     height: 600px;
     background: #fff;
     margin: 60px auto;
-    padding: 30px;
+    padding: 20px 40px;
     position: absolute;
     top: 0;
     left: 0;
@@ -221,7 +221,7 @@ body {
     
 .loginGreeting label {
     display: inline-block;
-    width: 150px;
+    width: 100%;
     font-size: 22px;
     margin-top: 30px;
 }
@@ -233,6 +233,7 @@ body {
 
 .loginWarning {
     color: red;
+    font-size: 16px;
     margin-left: 15px;
 }
 /*------------------------------*/
@@ -376,6 +377,13 @@ body {
     border: none;
     border-radius: 8px;
     outline: none;
+}
+
+.noPollsToDisplay {
+    width: 80%;
+    font-size: 36px;
+    margin: 100px auto;
+    text-align: center;
 }
 
 /*------------------------------*/

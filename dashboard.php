@@ -68,7 +68,10 @@ $polls = getPollsForUser($_SESSION['userID']);
                 echo "</div>";
             }
         } else { ?>
-            <h2>There are no polls to display! Click below to create a new one.</h2>
+            <div class='noPollsToDisplay'>
+                <p>There are no polls to display!</p>
+                <p>Click above to create a new one.</p>
+            </div>
         <?php } ?>
         </div>
     </div>

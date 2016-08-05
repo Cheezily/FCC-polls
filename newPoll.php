@@ -10,7 +10,7 @@
             <label for='pollTitle'>Title</label><br>
             <input class='newPollInput' id='pollTitle' type='text' name='pollTitle' value="<?php echo $pollTitle; ?>" required><br>
             <label for='pollExpiration'>Expiration 
-                <span class='optional'>(Optional - Format: YYYY-MM-DD hh:mm:ss)</span>
+                <span class='optional'>(Optional - Format: "YYYY-MM-DD hh:mm:ss")</span>
             </label><br>
             <input class='newPollInput' id='pollExpiration' type='datetime-local' name='pollExpiration' value="<?php echo $pollExpiration; ?>"><hr>
             <?php for ($i = 0; $i < $numPollOptions; $i++) {

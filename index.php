@@ -18,9 +18,46 @@ if (isset($_POST['logout']) || isset($_POST['cancel'])) {
     die();
 }
 
-//JUST A TEST. DISREGARD
-if (isset($_GET['newUser'])) {
+//handle request for new user registration
+if (isset($_POST['newUser'])) {
     $newUser = TRUE;
+}
+if (isset($_POST['newUserSubmit'])) {
+    require_once "model/loginDB.php";
+    $newUser = TRUE;
+    $password = filter_input(INPUT_POST, 'password');
+    $passwordConfirm = filter_input(INPUT_POST, 'passwordConfirm');
+    $usernameCheck = filter_input(INPUT_POST, 'username');
+    if (strlen($usernameCheck) == 0) {
+        $newUserError = TRUE;
+        $newUserMissing = TRUE;
+    }
+    if (strlen($password) == 0) {
+        $newUserError = TRUE;
+        $newUserPWmissing = TRUE;
+    }
+    if (strlen($password) >= 1 && strlen($password) < 8) {
+        $newUserError = TRUE;
+        $newUserPWshort = TRUE;
+    }
+    if (!empty(checkForUsername($usernameCheck))) {
+        $newUserError = TRUE;
+        $newUserTaken = TRUE;
+        $usernameCheck = '';
+    }
+    if (!newUserError && $password != $passwordConfirm) {
+        $newUserError = TRUE;
+        $newUserPWmatch = TRUE;
+    }
+    //if all checks pass, save the user info and then log the user in
+    if (!$newUserError) {
+        $saveUserAndLogin = saveNewUser($usernameCheck, $password);
+        if (!empty($saveUserAndLogin)) {
+            $_SESSION['userID'] = $saveUserAndLogin['userId'];
+            $_SESSION['username'] = $saveUserAndLogin['username'];
+            $dashboardLoad = TRUE;
+        }
+    }
 }
 
 //handles username and password being passed from the login page
@@ -137,10 +174,10 @@ function returnDBTime($htmlToConvert) {
 </head>
 <body>
     
-    <?php if(isset($newUser)) { include "newUser.php";} ?>
+    <?php if($newUser) { include "newUser.php";} ?>
     
     <!--$login comes from whether a login request has been sent to the index page-->
-    <?php if(isset($login) || $loginError) { include "login.php"; } ?>
+    <?php if($login || $loginError) { include "login.php"; } ?>
     
     <?php if(isset($_SESSION['userID'])) {
         include "dashboard.php";
@@ -151,7 +188,9 @@ function returnDBTime($htmlToConvert) {
     } ?>
     <!--called by default and if there's a login request ($login is set) so 
         it can fly off the screen-->
-    <?php if(!isset($loginError) && !isset($_SESSION['userID'])) {include "greeting.php";} ?>
+    <?php if(!$newUserError && !$loginError && !isset($_SESSION['userID'])) {
+        include "greeting.php";
+    } ?>
             
 
     

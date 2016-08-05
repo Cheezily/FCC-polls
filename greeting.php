@@ -1,4 +1,4 @@
-    <?php if(isset($login)) { ?>
+    <?php if(isset($login) || $newUser) { ?>
         <div class="container hideContainer">
     <?php } else { ?>
         <div class="container">

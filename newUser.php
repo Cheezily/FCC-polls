@@ -8,23 +8,34 @@
 <?php } ?>
         <h1>New user registration:</h1>
         <form method="post" action="">
-            <label for='loginName'>Username</label>
-            <?php if(isset($newUserTaken)) {
-                echo "<span class='loginWarning'>Username already taken!</span>";
+            <label for='loginName'>Username
+            <?php if($newUserTaken) {
+                echo " <span class='loginWarning'>Username already taken</span>";
+            } elseif ($newUserMissing) {
+                echo " <span class='loginWarning'>Username required</span>";
             } ?>
+            </label>
             <br>
-            <input type='text' name='username'><br>
-            <label for='newUserPW'>Password</label>
-            <?php if(isset($newUserPWmatch)) {
-                echo "<span class='loginWarning'>Passwords don't match!</span>";
+            <input type='text' name='username' 
+            <?php if(!$newUserTaken) {
+                echo "value='".$usernameCheck."' ";
+            } ?>       
+            ><br>
+            <label for='newUserPW'>Password (Min 8 characters)
+            <?php if($newUserPWmatch) {
+                echo "<span class='loginWarning'>Passwords don't match</span>";
             } ?>
-            <?php if(isset($newUserPWshort)) {
-                echo "<span class='loginWarning'>Password too short!</span>";
+            <?php if($newUserPWshort) {
+                echo "<span class='loginWarning'>Password too short</span>";
             } ?>
+            <?php if($newUserPWmissing) {
+                echo "<span class='loginWarning'>Password required</span>";
+            } ?>
+            </label>
             <br>
             <input id='newUserPW' type='password' name='password'><br>
-            <label for='newUserPWconfirm'>Password</label><br>
-            <input id='newUserPWconfirm' type='password' name='password'><br>
+            <label for='newUserPWconfirm'>Confirm Password</label><br>
+            <input id='newUserPWconfirm' type='password' name='passwordConfirm'><br>
             <input type='submit' name='newUserSubmit' value='Create User'><br>
             <input type='submit' name='cancel' value='Cancel'>
         </form>
