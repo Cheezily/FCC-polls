@@ -1,7 +1,7 @@
 body {
   background-image: url('../images/wood.jpg');
   font-family: sans-serif;
-  overflow: hidden;
+  overflow: auto;
   color: #555;
 }
 
