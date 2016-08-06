@@ -1,4 +1,25 @@
-    <?php if(isset($login) || $newUser) { ?>
+<?php 
+    require_once "model/pollsDB.php";
+    $pollList = getLatestPolls();
+    //var_dump($pollList);
+    $items = '';
+    for($i = 0; $i < 12; $i++) {
+        if (!empty($pollList[$i])) {
+            $items .= "<div class='item'>".
+                "<form method='get' action=''>".
+                "<button class='greetingOption' name='poll' value=".$pollList[$i]['pollID']."><h1>".
+                $pollList[$i]['title']."</h2></button></form></div>";
+        } else {
+            $items .= "<div class='item'>".
+                "<h1>Coming Soon!</h1>".
+                "</div>";
+        }
+
+    }
+?>    
+
+
+<?php if(isset($login) || $newUser) { ?>
         <div class="container hideContainer">
     <?php } else { ?>
         <div class="container">
@@ -25,7 +46,45 @@
 
           <div class="itemsLabel">Recent Polls -- Click to Participate</div>
           <div class='items'>
+<!--
+            <div class='item'>
+              <h1>Box #12</h1>
+            </div>
+            <div class='item'>
+              <h1>Box #11</h1>
+            </div>
+            <div class='item'>
+              <h1>Box #10</h1>
+            </div>
+            <div class='item'>
+              <h1>Box #9</h1>
+            </div>
+            <div class='item'>
+              <h1>Box #8</h1>
+            </div>
+            <div class='item'>
+              <h1>Box #7</h1>
+            </div>
+            <div class='item'>
+              <h1>Box #6</h1>
+            </div>
+            <div class='item'>
+              <h1>Box #5</h1>
+            </div>
+            <div class='item'>
+              <h1>Box #4</h1>
+            </div>
+            <div class='item'>
+              <h1>Box #3</h1>
+            </div>
+            <div class='item'>
+              <h1>Box #2</h1>
+            </div>
+            <div class='item'>
+              <h1>Box #1</h1>
+            </div>
 
+            <div class="repeatList">
             <div class='item'>
               <h1>Box #12</h1>
             </div>
@@ -59,46 +118,16 @@
             <div class='item'>
               <h1>Box #2</h1>
             </div>
-            <div class='item'>
+   ?php echo $items; ?>         <div class='item'>
               <h1>Box #1</h1>
             </div>
-            <!--repeat box 1 through 6-->
-            <div class='item'>
-              <h1>Box #12</h1>
-            </div>
-            <div class='item'>
-              <h1>Box #11</h1>
-            </div>
-            <div class='item'>
-              <h1>Box #10</h1>
-            </div>
-            <div class='item'>
-              <h1>Box #9</h1>
-            </div>
-            <div class='item'>
-              <h1>Box #8</h1>
-            </div>
-            <div class='item'>
-              <h1>Box #7</h1>
-            </div>
-            <div class='item'>
-              <h1>Box #6</h1>
-            </div>
-            <div class='item'>
-              <h1>Box #5</h1>
-            </div>
-            <div class='item'>
-              <h1>Box #4</h1>
-            </div>
-            <div class='item'>
-              <h1>Box #3</h1>
-            </div>
-            <div class='item'>
-              <h1>Box #2</h1>
-            </div>
-            <div class='item'>
-              <h1>Box #1</h1>
-            </div>
+-->
+<?php 
+    echo $items;
+    //echo "<div class='repeatList'>";
+    echo $items;
+    //echo "</div>";
+?>
           </div>
             <div class="shadowLayer">
 

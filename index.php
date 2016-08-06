@@ -6,17 +6,19 @@ include "model/database.php";
 
 //handle voting on a poll
 if (isset($_GET['vote'])) {
-    require_once 'model/pollsDB.php';
     $votedPoll = filter_input(INPUT_GET, 'poll', FILTER_VALIDATE_INT);
-    $_SESSION['votedPoll'] = $votedPoll;
-    $voteOption = filter_input(INPUT_GET, 'vote', FILTER_VALIDATE_INT);
-    //header("Location: index.php?poll=".$votedPoll);
-    //$_SESSION['votedPoll'] = '';
-    $pollInfo = getPollsByID($votedPoll);
-    $options = unserialize($pollInfo['options']);
-    $options[$voteOption][1]++;
-    $pollInfo['options'] = serialize($options);
-    saveVote($pollInfo['options'], $votedPoll);
+    if ($votedPoll && $_SESSION['votedPoll'] != $votedPoll) {
+        require_once 'model/pollsDB.php';
+        $_SESSION['votedPoll'] = $votedPoll;
+        $voteOption = filter_input(INPUT_GET, 'vote', FILTER_VALIDATE_INT);
+        $pollInfo = getPollsByID($votedPoll);
+        $options = unserialize($pollInfo['options']);
+        $options[$voteOption][1]++;
+        $pollInfo['options'] = serialize($options);
+        saveVote($pollInfo['options'], $votedPoll);
+    } else {
+        $results = TRUE;
+    }
 }
 
 //handle displaying the selected poll
@@ -26,6 +28,11 @@ if (isset($_GET['poll'])) {
         $voted = TRUE;
     }
     if (isset($_GET['results'])) {
+        echo "hit";
+        $results = TRUE;
+    }
+    if ($pollID == $_SESSION['votedPoll']) {
+        echo "TRUEEEE";
         $results = TRUE;
     }
 }

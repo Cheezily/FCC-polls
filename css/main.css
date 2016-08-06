@@ -1,7 +1,7 @@
 body {
   background-image: url('../images/wood.jpg');
   font-family: sans-serif;
-  overflow: auto;
+  overflow-y: scroll;
   color: #555;
 }
 
@@ -25,14 +25,15 @@ body {
 .hideContainer {
     animation: hideContainer 2s forwards;
 }
-/*
-@keyframes hideContainer {
-    0% {opacity: 1;}
-    40% {opacity: 0;}
-    100% {z-index: -1;}
-}
-*/
 
+
+@keyframes hideContainer {
+    0% {top: 60px; opacity: 1;}
+    15% {top: 260px; opacity: 1;}
+    100% {top: -2000px; opacity: 0;}
+}
+
+/*
 @keyframes hideContainer {
     0% {top: 60px; height: 600px;}
     10% {top: 250px; height: 600px;}
@@ -44,7 +45,7 @@ body {
           height: 0;
           opacity: 0;}
 }
-
+*/
 .leftSideStuff {
   box-sizing: border-box;
   padding: 20px;
@@ -82,7 +83,7 @@ body {
 .item {
   box-sizing: border-box;
   position: relative;
-  background: #aaa;
+  background: #ccc;
   height: 100px;
   width: 400px;
   float: left;
@@ -96,7 +97,7 @@ body {
 }
 
 .item:nth-of-type(2n) {
-  background: #7d7d7d;
+  background: #a3a3a3;
 }
 
 .item:hover {
@@ -119,6 +120,15 @@ body {
   font-family: verdana;
   font-size: 12px;
   content: "Click to go to this item";
+}
+
+.greetingOption {
+    height: 100px;
+    width: 100%;
+    border: none;
+    background: none;
+    color: #333;
+    outline: none;
 }
 
 .shadowLayer {
@@ -198,15 +208,15 @@ body {
     box-shadow: none;
     top: 60px;
     z-index: 2;
-    animation: loginGreetingUnload 2s forwards;
+    animation: loginGreetingUnload 1s forwards;
+}
+
+@keyframes loginGreetingUnload {
+    0% {top: 60px; opacity: 1;}
+    40% {top: 260px; opacity: 1;}
+    100% {top: -1000px; opacity: 0;}
 }
 /*
-@keyframes loginGreetingUnload {
-    0% {opacity: 1;}
-    40% {opacity: 0;}
-    100% {z-index: -1;}
-}
-*/
 @keyframes loginGreetingUnload {
     0% {top: 60px; height: 600px;}
     10% {top: 250px; height: 600px;}
@@ -218,7 +228,7 @@ body {
           height: 0;
           opacity: 0;}
 }    
-    
+*/ 
 .loginGreeting label {
     display: inline-block;
     width: 100%;
@@ -407,9 +417,17 @@ body {
 }
 
 .newPollInput {
-    width: 90%;
+    width: 370px;
     height: 25px;
     margin-bottom: 15px;
+    padding-left: 8px;
+    border-radius: 5px;
+    border: 1px solid #777;
+}
+
+.newPollInput:focus {
+    border: 1px solid green;
+    box-shadow: 0 0 10px lightgreen;
 }
 
 .optional {
@@ -476,8 +494,8 @@ body {
 
 /*------------------------------*/
 
-/*PAGE POLL*/
 
+/*POLL PAGE}*/
 .pollContainer {
     box-sizing: border-box;
     width: 920px;
@@ -498,7 +516,7 @@ body {
     border: 1px solid #333;
     margin: 5px;
     height: 45px;
-    width: 100%;
+    width: 840px;
     font-size: 24px;
     background: none;
     border-radius: 5px;
@@ -517,15 +535,22 @@ body {
 }
 
 .resultsButton {
+    display: block;
     float: right;
-    
+    margin-left: 50px;
 }
 
-.alreadyVoted {
-    position: absolute;
-    top: 60px;
-    height: 60px;
-    width: 100%;
-    background: #bbb;
+.resultGraph {
+    box-sizing: border-box;
+    margin: 0 0 10px 0;
+    text-align: center;
+    padding-top: 8px;
+    box-shadow: inset 0 0 10px lightgreen;
+}
+
+.resultTitle {
+    margin: 0;
+    color: #aaa;
+    border: 1px solid red;
 }
 /*------------------------------*/

@@ -1,6 +1,7 @@
 <?php
 require_once "database.php";
 
+
 function getPollsForUser($pollUserID) {
     global $db;
     
@@ -11,7 +12,6 @@ function getPollsForUser($pollUserID) {
     
     return $statement->fetchAll();
 };
-
 
 
 function savePoll($userID, $pollTitle, $optionsToSave, $pollExpiration, $keywordString) {
@@ -43,28 +43,6 @@ function savePoll($userID, $pollTitle, $optionsToSave, $pollExpiration, $keyword
 };
 
 
-function addUser($user) {
-    global $db;
-    $query = "INSERT INTO users (username, account_created, first_name,".
-            "last_name, email, passwordHash, role) VALUES (:username, ".
-            ":account_created, :first_name, :last_name, :email, :passwordHash, ".
-            ":role)";
-    $accountCreated = date("Y-m-d H:i:s");
-    
-    $passwordOptions = ['cost' => 11];
-    $passwordHash = password_hash($user['password'], PASSWORD_BCRYPT, $passwordOptions);
-    
-    $statement = $db->prepare($query);
-    $statement->bindValue(":username", strtolower($user['username']));
-    $statement->bindValue(":account_created", $accountCreated);
-    $statement->bindValue(":first_name", $user['firstName']);
-    $statement->bindValue(":last_name", $user['lastName']);
-    $statement->bindValue(":email", $user['email']);
-    $statement->bindValue(":passwordHash", $passwordHash);
-    $statement->bindValue(":role", $user['role']);
-    $statement->execute();
-};
-
 function getPollsByID($pollID) {
     global $db;
     
@@ -76,6 +54,7 @@ function getPollsByID($pollID) {
     return $statement->fetch();
 };
 
+
 function saveVote($options, $pollID) {
     global $db;
     
@@ -85,5 +64,17 @@ function saveVote($options, $pollID) {
     $statement->bindValue(":options", $options);
     $statement->bindValue(":pollID", $pollID);
     $statement->execute();
+}
+
+
+function getLatestPolls() {
+    global $db;
+    
+    $query = "SELECT * FROM polls ORDER BY dateCreated DESC LIMIT 12";
+    $statement = $db->prepare($query);
+    $statement->bindValue(":userID", $pollUserID);
+    $statement->execute();
+    
+    return $statement->fetchAll();
 }
 ?>
