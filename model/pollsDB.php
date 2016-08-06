@@ -4,7 +4,7 @@ require_once "database.php";
 function getPollsForUser($pollUserID) {
     global $db;
     
-    $query = "SELECT * FROM polls WHERE userId=:userID ORDER BY dateCreated DESC";
+    $query = "SELECT * FROM polls WHERE userID=:userID ORDER BY dateCreated DESC";
     $statement = $db->prepare($query);
     $statement->bindValue(":userID", $pollUserID);
     $statement->execute();
@@ -40,7 +40,7 @@ function savePoll($userID, $pollTitle, $optionsToSave, $pollExpiration, $keyword
     
     //var_dump($keywordArray);
     
-}
+};
 
 
 function addUser($user) {
@@ -63,6 +63,27 @@ function addUser($user) {
     $statement->bindValue(":passwordHash", $passwordHash);
     $statement->bindValue(":role", $user['role']);
     $statement->execute();
+};
 
+function getPollsByID($pollID) {
+    global $db;
+    
+    $query = "SELECT * FROM polls WHERE pollID=:pollID";
+    $statement = $db->prepare($query);
+    $statement->bindValue(":pollID", $pollID);
+    $statement->execute();
+    
+    return $statement->fetch();
+};
+
+function saveVote($options, $pollID) {
+    global $db;
+    
+    $query = "UPDATE polls SET options=:options WHERE pollID=:pollID";
+    
+    $statement = $db->prepare($query);
+    $statement->bindValue(":options", $options);
+    $statement->bindValue(":pollID", $pollID);
+    $statement->execute();
 }
 ?>

@@ -475,3 +475,57 @@ body {
 
 
 /*------------------------------*/
+
+/*PAGE POLL*/
+
+.pollContainer {
+    box-sizing: border-box;
+    width: 920px;
+    height: 600px;
+    background: #fff;
+    color: #666;
+    margin: 60px auto;
+    padding: 15px 30px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0px 5px 8px #000;
+    overflow: auto;
+}
+
+.pollOption {
+    border: 1px solid #333;
+    margin: 5px;
+    height: 45px;
+    width: 100%;
+    font-size: 24px;
+    background: none;
+    border-radius: 5px;
+    color: #777;
+    font-weight: bold;
+}
+
+.pollHeader {
+    height: 50px;
+    border-bottom: 2px solid #333;
+}
+
+.pollTitle {
+    display: block;
+    float: left;
+}
+
+.resultsButton {
+    float: right;
+    
+}
+
+.alreadyVoted {
+    position: absolute;
+    top: 60px;
+    height: 60px;
+    width: 100%;
+    background: #bbb;
+}
+/*------------------------------*/

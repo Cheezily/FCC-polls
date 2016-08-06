@@ -4,10 +4,35 @@ session_start();
 
 include "model/database.php";
 
+//handle voting on a poll
+if (isset($_GET['vote'])) {
+    require_once 'model/pollsDB.php';
+    $votedPoll = filter_input(INPUT_GET, 'poll', FILTER_VALIDATE_INT);
+    $_SESSION['votedPoll'] = $votedPoll;
+    $voteOption = filter_input(INPUT_GET, 'vote', FILTER_VALIDATE_INT);
+    //header("Location: index.php?poll=".$votedPoll);
+    //$_SESSION['votedPoll'] = '';
+    $pollInfo = getPollsByID($votedPoll);
+    $options = unserialize($pollInfo['options']);
+    $options[$voteOption][1]++;
+    $pollInfo['options'] = serialize($options);
+    saveVote($pollInfo['options'], $votedPoll);
+}
+
+//handle displaying the selected poll
+if (isset($_GET['poll'])) {
+    $pollID = filter_input(INPUT_GET, 'poll', FILTER_VALIDATE_INT);
+    if (isset($_GET['vote'])) {
+        $voted = TRUE;
+    }
+    if (isset($_GET['results'])) {
+        $results = TRUE;
+    }
+}
+
 //handle if the user clicked the login button
 if (isset($_POST['login'])) {
-    $login = TRUE;
-    
+    $login = TRUE; 
 }
 
 //handle if the user clicks a logout button or cancels login
@@ -174,12 +199,14 @@ function returnDBTime($htmlToConvert) {
 </head>
 <body>
     
+    <?php if($pollID) { include "poll.php"; } ?>
+    
     <?php if($newUser) { include "newUser.php";} ?>
     
     <!--$login comes from whether a login request has been sent to the index page-->
     <?php if($login || $loginError) { include "login.php"; } ?>
     
-    <?php if(isset($_SESSION['userID'])) {
+    <?php if(isset($_SESSION['userID']) && !$pollID) {
         include "dashboard.php";
         if ($newPoll || $newPollCancel || $newPollSubmit) {
             include "newPoll.php";
@@ -188,7 +215,7 @@ function returnDBTime($htmlToConvert) {
     } ?>
     <!--called by default and if there's a login request ($login is set) so 
         it can fly off the screen-->
-    <?php if(!$newUserError && !$loginError && !isset($_SESSION['userID'])) {
+    <?php if(!$pollID && !$newUserError && !$loginError && !isset($_SESSION['userID'])) {
         include "greeting.php";
     } ?>
             

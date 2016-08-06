@@ -58,8 +58,8 @@ $polls = getPollsForUser($_SESSION['userID']);
                 }
                 echo "</div>";
                 echo "<form method='get' action='index.php'>";
-                echo "<input type='hidden' name='poll' value='".$poll['pollID']."'>";
-                echo "<button class='goToPoll' type='submit' value='poll'>Go To Poll</button>";
+                //echo "<input type='hidden' name='poll' value='".$poll['pollID']."'>";
+                echo "<button class='goToPoll' type='submit' name='poll' value=".$poll['pollID'].">Go To Poll</button>";
                 echo "</form>";
                 echo "<form method='post' action='index.php'>";
                 echo "<input type='hidden' name='poll' value='".$poll['pollID']."'>";
