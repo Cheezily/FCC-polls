@@ -1,4 +1,4 @@
-<?php 
+<?php
     require_once "model/pollsDB.php";
     $pollList = getLatestPolls();
     //var_dump($pollList);
@@ -15,7 +15,7 @@
                 "</div>";
         }
     }
-?>    
+?>
 
 
 <?php if(isset($login) || $newUser) { ?>
@@ -23,7 +23,7 @@
     <?php } else { ?>
         <div class="container">
     <?php } ?>
-            
+
         <div class='greeting'>
           <div class='leftSideStuff'>
             <h1>Already have a user name?</h1>
@@ -47,9 +47,9 @@
             -->
           </div>
 
-          <div class="itemsLabel">Recent Polls -- Click to Vote!</div>
+          <div class="itemsLabel">Recent Polls - Click to Vote!</div>
           <div class='items'>
-<?php 
+<?php
     echo $items;
     echo $items;
 ?>

@@ -7,7 +7,7 @@
     <div class="loginGreeting">
 <?php } ?>
         <div class='formWrapper'>
-            <h1>New user registration:</h1>
+            <h1>Create New Username:</h1>
             <form method="post" action="">
                 <label for='loginName'>Username
                 <?php if($newUserTaken) {
@@ -17,10 +17,10 @@
                 } ?>
                 </label>
                 <br>
-                <input type='text' name='username' 
+                <input type='text' name='username'
                 <?php if(!$newUserTaken) {
                     echo "value='".$usernameCheck."' ";
-                } ?>       
+                } ?>
                 ><br>
                 <label for='newUserPW'>Password (Min 8 characters)
                 <?php if($newUserPWmatch) {
@@ -37,8 +37,8 @@
                 <input id='newUserPW' type='password' name='password'><br>
                 <label for='newUserPWconfirm'>Confirm Password</label><br>
                 <input id='newUserPWconfirm' type='password' name='passwordConfirm'><br>
-                <input class='cancelButtonLoginPage' type='submit' name='cancel' value='Cancel'>
                 <input class='loginButtonLoginPage' type='submit' name='newUserSubmit' value='Create User'>
+                <input class='cancelButtonLoginPage' type='submit' name='cancel' value='Cancel'>
             </form>
         </div>
     </div>

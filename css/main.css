@@ -38,7 +38,7 @@ body {
     10% {top: 250px; height: 600px;}
     40% {top: -1000px;
         transform: rotate(80deg);}
-    100% {z-index: 2; 
+    100% {z-index: 2;
           top: -1000px;
           left: 100%;
           height: 0;
@@ -178,7 +178,7 @@ body {
 }
 
 @keyframes scroll {
-  
+
   /*item height mult by num of items*/
   0% {top: 0px;}
   100% {top: -1200px;}
@@ -207,7 +207,7 @@ body {
     border-radius: 5px;
     width: 500px;
     margin: 30px 40px;
-    padding: 25px 30px 35px;
+    padding: 25px 30px 45px;
     background: #fff;
 }
 
@@ -278,7 +278,7 @@ body {
 
 .cancelButtonLoginPage {
     background: #aaa;
-    
+
 }
 
 .loginWarning {
@@ -405,7 +405,7 @@ body {
     height: 30px;
     width: 100px;
     float: right;
-    background: #5b5;
+    background: #4b4;
     color: #fff;
     margin: 9px;
     font-weight: bold;
@@ -466,8 +466,8 @@ body {
 }
 
 .newPollInput:focus {
-    border: 1px solid green;
-    box-shadow: 0 0 10px lightgreen;
+    border: 1px solid #4b4;
+    box-shadow: 0 0 10px #4b4;
 }
 
 .optional {
@@ -526,6 +526,30 @@ body {
     100% {opacity: 1; height: 50px;}
 }
 
+.addPollOption, .newPollSubmit, .newPollCancel {
+  width: 180px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  margin: 10px 15px 0 0;
+}
+
+.addPollOption {
+  background: #bbb;
+  color: #333;
+}
+
+.newPollSubmit {
+  background: #4b4;
+  color: #fff;
+}
+
+.newPollCancel {
+  width: 380px;
+  background: #b44;
+  color: #fff;
+}
 /*------------------------------*/
 
 /*CONFIRM POLL DELETION DIALOG*/

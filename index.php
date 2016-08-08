@@ -72,8 +72,7 @@ if (isset($_POST['newUserSubmit'])) {
     $password = filter_input(INPUT_POST, 'password');
     $passwordConfirm = filter_input(INPUT_POST, 'passwordConfirm');
     $usernameCheck = filter_input(INPUT_POST, 'username');
-    
-    echo "USER: ".$usernameCheck;
+
     if (strlen($usernameCheck) == 0) {
         $newUserError = TRUE;
         $newUserMissing = TRUE;
