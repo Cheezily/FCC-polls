@@ -15,8 +15,9 @@ if (!$pollID) {
 //get poll info from DB
 $pollInfo = getPollsByID($pollID);
 $options = unserialize($pollInfo['options']);
-if ($pollInfo['expiration'] < date("Y-m-d H:i:s")) {
-  //echo "<span>EXPIRED</span>";
+if (substr($pollInfo['dateExpiration'], 0, 4) !== "0000" && $pollInfo['dateExpiration'] < date("Y-m-d H:i:s")) {
+  $expired = TRUE;
+  $results = TRUE;
 }
 
 $voteCount = 0;
@@ -29,8 +30,10 @@ forEach($options as $option) {
 <div class="pollContainer">
     <div class='pollHeader'>
         <?php if($results || !empty($_SESSION['votedPoll']) && $_SESSION['votedPoll'] == $pollInfo['pollID']) { ?>
+            <?php if($expired) {echo "<div class='expired'>Voting Closed on ".$pollInfo['dateExpiration']."</div>";} ?>
             <h2 class='pollTitle'><span class='resultTitle'>Results for </span>
-                <?php echo $pollInfo['title'];?><span class='resultTitle'> - Total Votes: <?php echo $voteCount; ?></span></h2>
+                <?php echo $pollInfo['title'];?><span class='resultTitle'> - Votes: <?php echo $voteCount; ?></span>
+            </h2>
             <form class='resultsButton' method='get' action=''>
                 <input class='resultsButton' type='submit' value="Home Page">
             </form>

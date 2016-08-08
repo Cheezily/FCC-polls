@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
+-- version 4.5.2
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Jul 31, 2016 at 06:44 AM
--- Server version: 10.1.13-MariaDB
--- PHP Version: 7.0.8
+-- Host: localhost
+-- Generation Time: Aug 09, 2016 at 12:18 AM
+-- Server version: 10.1.10-MariaDB
+-- PHP Version: 5.6.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -63,6 +63,14 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`userId`, `username`, `passwordHash`, `lastActivity`, `created`) VALUES
+(16, 'user', '$2y$11$Li4BdJeM/wTPRMKsPMbhV.VaEHF17s.clg7IBi4xhFkoBZo9fH5ve', '2016-08-09 00:12:15', '2016-08-08 21:31:56'),
+(17, 'testuser', '$2y$11$DdJ6uHDBnZwujfKP3I1GOuyxljHb.23bXBgHa9LchiWRtwLiyIKt.', '2016-08-08 22:46:29', '2016-08-08 22:46:29');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -98,12 +106,12 @@ ALTER TABLE `keywords`
 -- AUTO_INCREMENT for table `polls`
 --
 ALTER TABLE `polls`
-  MODIFY `pollID` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `pollID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userId` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `userId` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
