@@ -31,7 +31,8 @@
                 <input class='loginButton' type="submit" value="Login" name="login">
             </form>
             <hr>
-            <h1>Create a new user name?</h1>
+            <h1>Or... </h1>
+            <h2>Create a new user name and set up some polls!</h2>
             <form method="post" action="">
                 <input class='newUserButton' type="submit" value="New User" name="newUser">
             </form>
@@ -47,7 +48,7 @@
             -->
           </div>
 
-          <div class="itemsLabel">Recent Polls - Click to Vote!</div>
+          <div class="itemsLabel">Most Recent Polls - Click to Vote!</div>
           <div class='items'>
 <?php
     echo $items;

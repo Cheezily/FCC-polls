@@ -23,7 +23,7 @@ body {
 }
 
 .hideContainer {
-    animation: hideContainer 2s forwards;
+    animation: hideContainer 1.5s forwards;
 }
 
 @keyframes hideContainer {
@@ -47,7 +47,7 @@ body {
 */
 .leftSideStuff {
   box-sizing: border-box;
-  padding: 20px;
+  padding: 30px 45px;
   float: left;
   background: #fff;
   width: 520px;
@@ -61,17 +61,16 @@ body {
     width: 400px;
     border: none;
     border-radius: 5px;
-    font-size: 24px;
-    font-weight: bold;
+    font-size: 26px;
 }
 
 .loginButton {
-    background: #aaa;
+    background: #4b4;
     color: white;
 }
 
 .newUserButton {
-    background: lightgreen;
+    background: #aaa;
     color: white;
 }
 
@@ -137,10 +136,10 @@ body {
 .item:hover::after {
   height: 15px;
   margin-top: 10px;
-  /*border-top: 1px dotted #333;*/
+  border-top: 1px dotted #333;
   font-family: verdana;
   font-size: 12px;
-  content: "Click to Go Vote!";
+  content: "Click to Vote on this Poll";
 }
 
 .greetingOption {
@@ -315,7 +314,7 @@ body {
     margin: 0 auto;
     height: 60px;
     width: 920px;
-    padding: 15px 30px 0 100px;
+    padding: 15px 30px 0 50px;
     background: #eee;
     z-index: 4;
     box-shadow: 0px 3px 5px #000;
@@ -426,25 +425,31 @@ body {
     background: #4b4;
     color: #fff;
     margin: 9px;
+    font-size: 14px;
     font-weight: bold;
     border: none;
     border-radius: 8px;
     outline: none;
 }
 
-.deletePoll {
+.deletePoll, .deletePollConfirm {
     display: block;
     box-sizing: border-box;
     height: 30px;
     width: 100px;
     float: right;
-    background: #c55;
+    background: #b55;
     color: #fff;
     margin: 9px;
+    font-size: 14px;
     font-weight: bold;
     border: none;
     border-radius: 8px;
     outline: none;
+}
+
+.deletePollConfirm {
+  background: red;
 }
 
 .noPollsToDisplay {
@@ -639,5 +644,15 @@ body {
 .resultTitle {
     margin: 0;
     color: #aaa;
+}
+
+.resultsButton {
+  background: #4b4;
+  width: 180px;
+  height: 35px;
+  border: none;
+  color: white;
+  font-size: 22px;
+  border-radius: 5px;
 }
 /*------------------------------*/

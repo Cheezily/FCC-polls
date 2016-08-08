@@ -15,6 +15,9 @@ if (!$pollID) {
 //get poll info from DB
 $pollInfo = getPollsByID($pollID);
 $options = unserialize($pollInfo['options']);
+if ($pollInfo['expiration'] < date("Y-m-d H:i:s")) {
+  //echo "<span>EXPIRED</span>";
+}
 
 $voteCount = 0;
 forEach($options as $option) {
@@ -27,24 +30,24 @@ forEach($options as $option) {
     <div class='pollHeader'>
         <?php if($results || !empty($_SESSION['votedPoll']) && $_SESSION['votedPoll'] == $pollInfo['pollID']) { ?>
             <h2 class='pollTitle'><span class='resultTitle'>Results for </span>
-                <?php echo $pollInfo['title'];?><span class='resultTitle'> - Total Votes: <?php echo $voteCount; ?></span><h2>
+                <?php echo $pollInfo['title'];?><span class='resultTitle'> - Total Votes: <?php echo $voteCount; ?></span></h2>
             <form class='resultsButton' method='get' action=''>
-                <input type='submit' value="Back to Main Page">
+                <input class='resultsButton' type='submit' value="Home Page">
             </form>
         <?php } else { ?>
             <h2 class='pollTitle'><?php echo $pollInfo['title']; ?> - Please vote!</h2>
             <form class='resultsButton' method='get' action=''>
                 <input type='hidden' name='poll' value=<?php echo $pollInfo['pollID']; ?>>
-                <button type='submit' name='results' value="true">
+                <button class='resultsButton' type='submit' name='results' value="true">
                     Poll Results
                 </button>
             </form>
         <?php } ?>
 
-        
+
     </div><br>
     <?php for($i = 0; $i < count($options); $i++) { ?>
-    
+
                 <?php if ($results || $pollMatch) {
                     if ($voteCount > 0) {
                         $bgWidth = floor(855 * $options[$i][1] / $voteCount);
@@ -55,19 +58,19 @@ forEach($options as $option) {
                     <div class='pollOption resultGraph'
                          <?php echo "style='box-shadow: inset ".$bgWidth."px 0 0 -15px lightgreen;'" ?>>
                         <span class='voteCount'>
-                            <?php 
+                            <?php
                                 echo $options[$i][0]." - ".$options[$i][1];
                             ?> Votes
                         </span>
                     </div>
                 <?php } else { ?>
                     <form method='get' action='index.php'>
-                    <input type='hidden' name='poll' value='<?php echo $pollID; ?>'>
-                    <button class="pollOption" type='submit' name='vote' value='<?php 
-                        echo $i; ?>'><?php echo $options[$i][0];
-                        ?></button>
+                      <input type='hidden' name='poll' value='<?php echo $pollID; ?>'>
+                      <button class="pollOption" type='submit' name='vote' value='<?php echo $i; ?>'>
+                          <?php echo $options[$i][0]; ?>
+                      </button>
                     </form>
                 <?php } ?>
-        
+
     <?php } ?>
 </div>

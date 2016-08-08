@@ -62,7 +62,12 @@ $polls = getPollsForUser($_SESSION['userID']);
                 echo "<button class='goToPoll' type='submit' name='poll' value=".$poll['pollID'].">Go To Poll</button>";
                 echo "</form>";
                 echo "<form method='post' action='index.php'>";
-                echo "<button class='deletePoll' type='submit' name='delete' value='".$poll['pollID']."'>Delete Poll</button>";
+                if ($deleteConfirm && $poll['pollID'] == $pollIDdelete) {
+                    echo "<button class='deletePollConfirm' type='submit' name='delete' value='".$poll['pollID']."'>You Sure?</button>";
+                } else {
+                    echo "<button class='deletePoll' type='submit' name='deleteConfirm' value='".$poll['pollID']."'>Delete Poll</button>";
+                }
+
                 echo "</form>";
                 echo "</div>";
             }
