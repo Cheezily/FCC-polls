@@ -546,6 +546,12 @@ body {
     text-align: center;
     padding-top: 8px;
     box-shadow: inset 0 0 10px lightgreen;
+    animation: slideIn 1s forwards;
+}
+
+@keyframes slideIn {
+    0% {box-shadow: inset 0 0 10px lightgreen;}
+    100% {}
 }
 
 .resultTitle {
