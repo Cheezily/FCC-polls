@@ -14,7 +14,6 @@
                 "<h1>Coming Soon!</h1>".
                 "</div>";
         }
-
     }
 ?>    
 
@@ -27,13 +26,16 @@
             
         <div class='greeting'>
           <div class='leftSideStuff'>
-            <h1>Already a registered user?</h1>
+            <h1>Already have a user name?</h1>
             <form method="post" action="">
-                <input type="submit" value="Login" name="login">
+                <input class='loginButton' type="submit" value="Login" name="login">
             </form>
+            <hr>
+            <h1>Create a new user name?</h1>
             <form method="post" action="">
-                <input type="submit" value="New User" name="newUser">
+                <input class='newUserButton' type="submit" value="New User" name="newUser">
             </form>
+            <!-- keyword search function will be added later
             <hr>
             <h1>Search for polls by keyword:</h1>
             <form method='get' action=''>
@@ -42,91 +44,14 @@
                 <input type='text' name='keywords' placeholder='keywords'>
                 <input type='submit' value='Search!'>
             </form>
+            -->
           </div>
 
-          <div class="itemsLabel">Recent Polls -- Click to Participate</div>
+          <div class="itemsLabel">Recent Polls -- Click to Vote!</div>
           <div class='items'>
-<!--
-            <div class='item'>
-              <h1>Box #12</h1>
-            </div>
-            <div class='item'>
-              <h1>Box #11</h1>
-            </div>
-            <div class='item'>
-              <h1>Box #10</h1>
-            </div>
-            <div class='item'>
-              <h1>Box #9</h1>
-            </div>
-            <div class='item'>
-              <h1>Box #8</h1>
-            </div>
-            <div class='item'>
-              <h1>Box #7</h1>
-            </div>
-            <div class='item'>
-              <h1>Box #6</h1>
-            </div>
-            <div class='item'>
-              <h1>Box #5</h1>
-            </div>
-            <div class='item'>
-              <h1>Box #4</h1>
-            </div>
-            <div class='item'>
-              <h1>Box #3</h1>
-            </div>
-            <div class='item'>
-              <h1>Box #2</h1>
-            </div>
-            <div class='item'>
-              <h1>Box #1</h1>
-            </div>
-
-            <div class="repeatList">
-            <div class='item'>
-              <h1>Box #12</h1>
-            </div>
-            <div class='item'>
-              <h1>Box #11</h1>
-            </div>
-            <div class='item'>
-              <h1>Box #10</h1>
-            </div>
-            <div class='item'>
-              <h1>Box #9</h1>
-            </div>
-            <div class='item'>
-              <h1>Box #8</h1>
-            </div>
-            <div class='item'>
-              <h1>Box #7</h1>
-            </div>
-            <div class='item'>
-              <h1>Box #6</h1>
-            </div>
-            <div class='item'>
-              <h1>Box #5</h1>
-            </div>
-            <div class='item'>
-              <h1>Box #4</h1>
-            </div>
-            <div class='item'>
-              <h1>Box #3</h1>
-            </div>
-            <div class='item'>
-              <h1>Box #2</h1>
-            </div>
-   ?php echo $items; ?>         <div class='item'>
-              <h1>Box #1</h1>
-            </div>
--->
 <?php 
     echo $items;
-    //echo "<div class='repeatList'>";
     echo $items;
-    //echo "</div>";
 ?>
           </div>
             <div class="shadowLayer">

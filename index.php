@@ -72,6 +72,8 @@ if (isset($_POST['newUserSubmit'])) {
     $password = filter_input(INPUT_POST, 'password');
     $passwordConfirm = filter_input(INPUT_POST, 'passwordConfirm');
     $usernameCheck = filter_input(INPUT_POST, 'username');
+    
+    echo "USER: ".$usernameCheck;
     if (strlen($usernameCheck) == 0) {
         $newUserError = TRUE;
         $newUserMissing = TRUE;
@@ -89,7 +91,7 @@ if (isset($_POST['newUserSubmit'])) {
         $newUserTaken = TRUE;
         $usernameCheck = '';
     }
-    if (!newUserError && $password != $passwordConfirm) {
+    if (!$newUserError && $password !== $passwordConfirm) {
         $newUserError = TRUE;
         $newUserPWmatch = TRUE;
     }
@@ -102,6 +104,7 @@ if (isset($_POST['newUserSubmit'])) {
             $dashboardLoad = TRUE;
         }
     }
+    
 }
 
 //handles username and password being passed from the login page

@@ -26,7 +26,6 @@ body {
     animation: hideContainer 2s forwards;
 }
 
-
 @keyframes hideContainer {
     0% {top: 60px; opacity: 1;}
     15% {top: 260px; opacity: 1;}
@@ -54,6 +53,26 @@ body {
   width: 520px;
   height: 100%;
   box-shadow: 0px 5px 8px #000;
+}
+
+.loginButton, .newUserButton {
+    margin: 0 auto 20px;
+    height: 45px;
+    width: 400px;
+    border: none;
+    border-radius: 5px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.loginButton {
+    background: #aaa;
+    color: white;
+}
+
+.newUserButton {
+    background: lightgreen;
+    color: white;
 }
 
 .items {
@@ -88,12 +107,12 @@ body {
   width: 400px;
   float: left;
   margin-left: 0;
-  animation: scroll 15s infinite linear;
   border: 1px solid #333;
   border-right: none;
   border-left: none;
   text-align: center;
   z-index: 0;
+  animation: scroll 15s infinite linear;
 }
 
 .item:nth-of-type(2n) {
@@ -101,7 +120,7 @@ body {
 }
 
 .item:hover {
-  height: 118px;
+  height: 122px;
   width: 430px;
   float: left;
   position: relative;
@@ -116,10 +135,12 @@ body {
 }
 
 .item:hover::after {
-  border-top: 1px dotted #333;
+  height: 15px;
+  margin-top: 10px;
+  /*border-top: 1px dotted #333;*/
   font-family: verdana;
   font-size: 12px;
-  content: "Click to go to this item";
+  content: "Click to Go Vote!";
 }
 
 .greetingOption {
@@ -171,7 +192,7 @@ body {
     opacity: 1;
     width: 920px;
     height: 600px;
-    background: #fff;
+    background: #eee;
     margin: 60px auto;
     padding: 20px 40px;
     position: absolute;
@@ -179,6 +200,16 @@ body {
     left: 0;
     right: 0;
     box-shadow: 0px 5px 8px #000;
+}
+
+.formWrapper {
+    border: 2px solid #aaa;
+    border-radius: 5px;
+    width: 500px;
+    height: 400px;
+    margin: 40px 40px;
+    padding: 30px;
+    background: #fff;
 }
 
 .loginGreetingLoad {
@@ -196,8 +227,6 @@ body {
 
 .loginGreeting form {
     display: block;
-    width: 100%;
-    height: 100%;
     margin: 0 auto;
 }
 
@@ -216,34 +245,46 @@ body {
     40% {top: 260px; opacity: 1;}
     100% {top: -1000px; opacity: 0;}
 }
-/*
-@keyframes loginGreetingUnload {
-    0% {top: 60px; height: 600px;}
-    10% {top: 250px; height: 600px;}
-    40% {top: -1000px;
-        transform: rotate(-80deg);}
-    100% {z-index: -1; 
-          top: -2000px;
-          left: -100%;
-          height: 0;
-          opacity: 0;}
-}    
-*/ 
+
 .loginGreeting label {
     display: inline-block;
     width: 100%;
-    font-size: 22px;
+    height: 25px;
+    font-size: 18px;
     margin-top: 30px;
 }
 
-.loginGreeting input {
+.loginGreeting input:not([type="submit"]) {
     height: 40px;
     width: 400px;
+    font-size: 18px;
+    padding-left: 10px;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+}
+
+.loginButtonLoginPage, .cancelButtonLoginPage {
+    width: 195px;
+    height: 45px;
+    margin: 35px 18px 0 0;
+    font-size: 26px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+.loginButtonLoginPage {
+    background: #4b4;
+}
+
+.cancelButtonLoginPage {
+    background: #aaa;
+    
 }
 
 .loginWarning {
     color: red;
-    font-size: 16px;
+    font-size: 14px;
     margin-left: 15px;
 }
 /*------------------------------*/
