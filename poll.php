@@ -47,7 +47,7 @@ forEach($options as $option) {
     
                 <?php if ($results || $pollMatch) {
                     if ($voteCount > 0) {
-                        $bgWidth = floor(840 * $options[$i][1] / $voteCount);
+                        $bgWidth = floor(855 * $options[$i][1] / $voteCount);
                     } else {
                         $bgWidth = 1;
                     }
