@@ -37,6 +37,18 @@ if (isset($_GET['poll'])) {
     }
 }
 
+//handle if the user wants to delete a poll from their dashboard
+if (isset($_POST['delete'])) {
+    require_once 'model/pollsDB.php';
+    $pollID = filter_input(INPUT_POST, 'delete', FILTER_VALIDATE_INT);
+    $pollInfo = getPollsByID($pollID);
+    $pollUserID = $pollInfo['userID'];
+    if ($_SESSION['userID'] == $pollUserID) {        
+        deletePoll($pollID, $pollUserID);
+        header("Location: index.php");
+    }
+}
+
 //handle if the user clicked the login button
 if (isset($_POST['login'])) {
     $login = TRUE; 

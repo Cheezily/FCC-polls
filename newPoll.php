@@ -37,8 +37,6 @@
                         echo "<button type='submit' name='removeOption' value=".$i." class='removeOption'>-</button><br>";
                         echo "</div>";
                     }
-                    
-                    
                 }
             } ?>
             <input type="hidden" name='numPollOptions' value=<?php echo $numPollOptions; ?>>

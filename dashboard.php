@@ -14,7 +14,7 @@ $polls = getPollsForUser($_SESSION['userID']);
 
 ?>
 <div class='dashboardHeader'>
-    <h1>Welcome, <?php echo $_SESSION['username']?>!</h1>
+    <h1>Welcome, <?php echo ucfirst($_SESSION['username']);?>!</h1>
     <form class='dashboardLogout' method='post' action='index.php'>
         <input type='submit' name='logout' value='Log Out'>
     </form>
@@ -62,8 +62,7 @@ $polls = getPollsForUser($_SESSION['userID']);
                 echo "<button class='goToPoll' type='submit' name='poll' value=".$poll['pollID'].">Go To Poll</button>";
                 echo "</form>";
                 echo "<form method='post' action='index.php'>";
-                echo "<input type='hidden' name='poll' value='".$poll['pollID']."'>";
-                echo "<button class='deletePoll' type='submit' value='delete'>Delete Poll</button>";
+                echo "<button class='deletePoll' type='submit' name='delete' value='".$poll['pollID']."'>Delete Poll</button>";
                 echo "</form>";
                 echo "</div>";
             }

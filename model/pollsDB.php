@@ -77,4 +77,17 @@ function getLatestPolls() {
     
     return $statement->fetchAll();
 }
+
+function deletePoll($pollID ,$pollUserID) {
+    global $db;
+    
+    $query = "DELETE FROM polls where pollID=:pollID AND userID=:userID";
+    $statement = $db->prepare($query);
+    $statement->bindValue(":userID", $pollUserID);
+    $statement->bindValue(":pollID", $pollID);
+    $statement->execute();
+    
+    echo getPollsByID($pollID);
+    
+}
 ?>
