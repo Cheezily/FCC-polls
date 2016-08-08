@@ -16,15 +16,15 @@ $polls = getPollsForUser($_SESSION['userID']);
 <div class='dashboardHeader'>
     <h1>Welcome, <?php echo ucfirst($_SESSION['username']);?>!</h1>
     <form class='dashboardLogout' method='post' action='index.php'>
-        <input type='submit' name='logout' value='Log Out'>
+        <input class='dashboardLogout' type='submit' name='logout' value='Log Out'>
     </form>
      <form class='newPollButton' method="post" action="index.php">
-        <input type="submit" name="newPoll" value="Create New Poll">
+        <input class='dashboardNewPoll' type="submit" name="newPoll" value="Create New Poll">
     </form>
 </div>
 <?php if ($dashboardLoad == TRUE) {include "login.php"; ?>
     <div class='dashboard dashboardLoad'>
-<?php 
+<?php
 } else { ?>
     <div class='dashboard'>
 <?php } ?>
@@ -35,7 +35,7 @@ $polls = getPollsForUser($_SESSION['userID']);
     <?php } elseif ($keepDashboardFaded) { ?>
         <div class='keepDashboardFaded'>
     <?php } else { ?>
-        <div>   
+        <div>
     <?php } ?>
         <?php if(!empty($polls)) {
             forEach($polls as $poll) {
